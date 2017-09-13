@@ -14,7 +14,7 @@ public class TestGoogleMapsReositoryControl {
 
 	private static int NO_OF_PLACES_PER_DAY = 4;
 	
-	public static void main(String[] args) throws IOException, JSONException {
+	public static void main(String[] args) throws IOException, JSONException, InterruptedException {
 		
 		FileReader fileReader = new FileReader();
 		List<String> allPlacesToHop = fileReader.getPlacesToHop("C://Users//deepa//Desktop//LocaHopperData//LocaData.txt");
@@ -31,6 +31,7 @@ public class TestGoogleMapsReositoryControl {
 			}
 			count++;
 			Place nearestToOrigin = NNUtils.getNearestPlace(currentPivot, allPlacesToHop);
+			Thread.sleep(2500);
 			DecimalFormat df = new DecimalFormat("0.00"); // Set your desired format here.
 			String d = df.format(nearestToOrigin.getDistance()/1000.0);
 			System.out.println("From : "+currentPivot +"; To : "+nearestToOrigin.getPlaceName()+"; Distance : "+ d +" km");
